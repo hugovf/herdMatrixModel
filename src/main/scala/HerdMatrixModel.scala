@@ -13,11 +13,13 @@ object HerdMatrixModel extends App {
 
       val demographicStages = Data.readFile(csvFile)
 
-      val stageTransitionMatrix = Utils.stageTransitionMatrix(demographicStages)
-      val survivalMatrix = Utils.survivalMatrix(demographicStages)
-      val fecundityMatrix = Utils.fecundityMatrix(demographicStages)
+      demographicStages.foreach { stages =>
+        val stageTransitionMatrix = Utils.stageTransitionMatrix(stages)
+        val survivalMatrix = Utils.survivalMatrix(stages)
+        val fecundityMatrix = Utils.fecundityMatrix(stages)
 
-      val aMatrix = stageTransitionMatrix * survivalMatrix * fecundityMatrix
+        val aMatrix = stageTransitionMatrix * survivalMatrix * fecundityMatrix
+      }
     }
 
   }
