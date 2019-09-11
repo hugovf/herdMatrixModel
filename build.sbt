@@ -8,7 +8,8 @@ crossScalaVersions := Seq("2.12.8")
 
 lazy val herdmatrixmodel = Project("HeardMatrixModel", file(".")) enablePlugins (SbtOsgi) settings(
   libraryDependencies += "org.scalanlp" %% "breeze" % "1.0",
-  
+  libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
+  libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",  
   OsgiKeys.exportPackage := Seq("fr.cirad.*;-split-package:=merge-first"),
   OsgiKeys.importPackage := Seq("*;resolution:=optional"),
   OsgiKeys.privatePackage := Seq("!scala.*,!java.*,!META-INF.*.RSA,!META-INF.*.SF,!META-INF.*.DSA,META-INF.services.*,META-INF.*,*"),
